@@ -4,7 +4,12 @@ export default ({ options, button }) => {
   return (
     <View style={styles.form}>
       {Object.keys(options).map((input, index) => (
-        <TextInput key={index} style={styles.input} {...options[input]} />
+        <TextInput
+          key={index}
+          style={styles.input}
+          placeholder={input}
+          {...options[input]}
+        />
       ))}
       <Pressable
         style={({ pressed }) =>

@@ -3,18 +3,12 @@ import {
   StatusBar,
   Platform,
   KeyboardAvoidingView,
+  ScrollView,
 } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import LayoutContextProvider from "../context/User/layout/LayoutContext";
 const Layout = (props) => {
-  const isIPhone = Platform.OS === "ios";
-  return (
-    <KeyboardAvoidingView
-      style={isIPhone ? styles.iphone : props.style}
-      behavior={isIPhone ? "padding" : "height"}
-    >
-      <StatusBar hidden={false} barStyle="default" showHideTransition="fade" />
-      {props.children}
-    </KeyboardAvoidingView>
-  );
+  return <LayoutContextProvider>{props.children}</LayoutContextProvider>;
 };
 
 const styles = StyleSheet.create({
@@ -23,6 +17,9 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     marginLeft: 20,
     marginRight: 20,
+  },
+  contentContainer: {
+    minHeight: "100%",
   },
 });
 

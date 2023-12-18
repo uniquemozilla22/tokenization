@@ -6,52 +6,52 @@ import {
   Pressable,
 } from "react-native";
 import From from "../../component/From";
-import { useContext, useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import LoginBackground from "../../assets/login_background.jpg";
-import { LayoutContext } from "../../context/User/layout/LayoutContext";
+import { useState } from "react";
 
 export default () => {
-  const { handleBackgroundImage } = useContext(LayoutContext);
   const [formUser, setFormUser] = useState({
     username: "",
     password: "",
+    firstName: "",
+    middleName: "",
+    email: "",
+    lastName: "",
   });
-
-  useEffect(() => {
-    handleBackgroundImage(LoginBackground);
-  }, []);
-
-  const navigate = useNavigation();
   const formObject = {
+    "first name": {
+      onChangeText: (value) => setFormUser({ ...formUser, firstName: value }),
+    },
+    "middle name": {
+      onChangeText: (value) => setFormUser({ ...formUser, middleName: value }),
+    },
+    "last name": {
+      onChangeText: (value) => setFormUser({ ...formUser, lastName: value }),
+    },
+    email: {
+      onChangeText: (value) => setFormUser({ ...formUser, email: value }),
+    },
     username: {
       onChangeText: (value) => setFormUser({ ...formUser, username: value }),
-      placeholder: "username",
     },
     password: {
       onChangeText: (value) => setFormUser({ ...formUser, password: value }),
-      placeholder: "password",
     },
   };
   const buttonConfig = {
     onPress: () => {
       console.log("hello");
     },
-    title: "Login",
-  };
-
-  const navigateToRegisterPage = () => {
-    navigate.navigate("Register");
+    title: "Register",
   };
 
   return (
     <>
       <View style={styles.login_page}>
-        <Text style={styles.heading}>Login</Text>
-        <View style={styles.login_container}>
+        <Text style={styles.heading}>Register</Text>
+        <View>
           <From options={formObject} button={buttonConfig} />
-          <Pressable onPress={navigateToRegisterPage}>
-            <Text style={styles.registerText}>Don't have an Account?</Text>
+          <Pressable>
+            <Text style={styles.loginText}>Login</Text>
           </Pressable>
         </View>
       </View>
@@ -60,12 +60,6 @@ export default () => {
 };
 
 const styles = StyleSheet.create({
-  login_container: {
-    backgroundColor: "#fafafa80",
-    height: "auto",
-    padding: 10,
-    borderRadius: 10,
-  },
   login_page: {
     flexDirection: "column",
     justifyContent: "space-between",
@@ -76,8 +70,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
-  registerText: {
+  loginText: {
     textAlign: "center",
-    padding: 5,
+    padding: 10,
   },
 });
