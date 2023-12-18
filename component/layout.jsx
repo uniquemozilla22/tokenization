@@ -1,12 +1,28 @@
-import { StyleSheet, View } from "react-native";
-
+import {
+  StyleSheet,
+  StatusBar,
+  Platform,
+  KeyboardAvoidingView,
+} from "react-native";
 const Layout = (props) => {
-  return <View style={styles.iphone}>{props.children}</View>;
+  const isIPhone = Platform.OS === "ios";
+  return (
+    <KeyboardAvoidingView
+      style={isIPhone ? styles.iphone : props.style}
+      behavior={isIPhone ? "padding" : "height"}
+    >
+      <StatusBar hidden={false} barStyle="default" showHideTransition="fade" />
+      {props.children}
+    </KeyboardAvoidingView>
+  );
 };
 
 const styles = StyleSheet.create({
   iphone: {
-    marginTop: 100,
+    marginTop: 50,
+    marginBottom: 50,
+    marginLeft: 20,
+    marginRight: 20,
   },
 });
 
