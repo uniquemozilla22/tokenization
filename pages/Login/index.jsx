@@ -6,7 +6,7 @@ import {
   Pressable,
 } from "react-native";
 import From from "../../component/From";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import LoginBackground from "../../assets/login_background.jpg";
 import { LayoutContext } from "../../context/User/layout/LayoutContext";
@@ -25,11 +25,15 @@ export default () => {
   const navigate = useNavigation();
   const formObject = {
     username: {
-      onChangeText: (value) => setFormUser({ ...formUser, username: value }),
+      onChangeText: (value) => {
+        setFormUser({ ...formUser, username: value });
+      },
       placeholder: "username",
     },
     password: {
-      onChangeText: (value) => setFormUser({ ...formUser, password: value }),
+      onChangeText: (value) => {
+        setFormUser({ ...formUser, password: value });
+      },
       placeholder: "password",
     },
   };
@@ -43,6 +47,25 @@ export default () => {
   const navigateToRegisterPage = () => {
     navigate.navigate("Register");
   };
+
+  const fetch = useCallback(() => {
+    const response = fetch("https://reactnative.dev/movies.json")
+      .then((res) => res.json())
+      .then((response) => {
+        console.log("called");
+
+        return response;
+      });
+    console.log(response);
+  }, []);
+
+  // function fetch() {
+  //   console.log("hello");
+  // }
+
+  useEffect(() => {
+    fetch();
+  }, [fetch]);
 
   return (
     <>
@@ -63,13 +86,13 @@ const styles = StyleSheet.create({
   login_container: {
     backgroundColor: "#fafafa80",
     height: "auto",
-    padding: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     borderRadius: 10,
   },
   login_page: {
     flexDirection: "column",
     justifyContent: "space-between",
-    height: "100%",
   },
   heading: {
     fontSize: 26,

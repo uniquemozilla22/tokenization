@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  StatusBar,
-  Platform,
-  KeyboardAvoidingView,
-  ScrollView,
-} from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet } from "react-native";
 import LayoutContextProvider from "../context/User/layout/LayoutContext";
 const Layout = (props) => {
   return <LayoutContextProvider>{props.children}</LayoutContextProvider>;

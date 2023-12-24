@@ -17,7 +17,7 @@ const LayoutContextProvider = ({ style, children }) => {
 
   const initialValue = {
     os: { isIPhone },
-    handleBackgroundImage: setBackgroundImage,
+    handleBackgroundImage: (data) => setBackgroundImage(data),
   };
   return (
     <LayoutContext.Provider value={initialValue}>
@@ -47,14 +47,14 @@ const LayoutContextProvider = ({ style, children }) => {
 export default LayoutContextProvider;
 
 const styles = StyleSheet.create({
-  imageBackground: {},
+  imageBackground: {
+    width: "100%",
+  },
   iphone: {
     marginTop: 50,
     marginBottom: 50,
     marginLeft: 20,
     marginRight: 20,
   },
-  contentContainer: {
-    minHeight: "100%",
-  },
+  contentContainer: {},
 });
