@@ -6,6 +6,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   ImageBackground,
+  Text,
 } from "react-native";
 export const LayoutContext = createContext({
   backgroundImage: "",

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import LayoutContextProvider from "../context/User/layout/LayoutContext";
+import LayoutContextProvider from "../context/layout/LayoutContext";
 const Layout = (props) => {
   return <LayoutContextProvider>{props.children}</LayoutContextProvider>;
 };

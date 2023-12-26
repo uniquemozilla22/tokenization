@@ -9,7 +9,8 @@ import From from "../../component/From";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import LoginBackground from "../../assets/login_background.jpg";
-import { LayoutContext } from "../../context/User/layout/LayoutContext";
+import { LayoutContext } from "../../context/layout/LayoutContext";
+import { API } from "../../api/APIService";
 
 export default () => {
   const { handleBackgroundImage } = useContext(LayoutContext);
@@ -39,7 +40,7 @@ export default () => {
   };
   const buttonConfig = {
     onPress: () => {
-      console.log("hello");
+      fetchdata();
     },
     title: "Login",
   };
@@ -48,24 +49,7 @@ export default () => {
     navigate.navigate("Register");
   };
 
-  const fetch = useCallback(() => {
-    const response = fetch("https://reactnative.dev/movies.json")
-      .then((res) => res.json())
-      .then((response) => {
-        console.log("called");
-
-        return response;
-      });
-    console.log(response);
-  }, []);
-
-  // function fetch() {
-  //   console.log("hello");
-  // }
-
-  useEffect(() => {
-    fetch();
-  }, [fetch]);
+  const fetchdata = useCallback(async () => {}, []);
 
   return (
     <>
