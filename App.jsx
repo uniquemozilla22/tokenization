@@ -13,23 +13,6 @@ export default function App() {
     <Layout style={styles.container}>
       <NavigationContainer>
         <Login />
-        {/* <Register /> */}
-        {/* <Stack.Navigator
-          initialRouteName="Login"
-          screenOptions={{ headerShown: false }}
-        >
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{ title: "Login" }}
-          />
-          <Stack.Screen
-            name="Register"
-            component={Register}
-            options={{ title: "Register" }}
-          />
-          <Stack.Screen name="Home" component={Home} />
-        </Stack.Navigator> */}
       </NavigationContainer>
     </Layout>
   );
